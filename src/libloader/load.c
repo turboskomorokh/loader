@@ -15,11 +15,11 @@ void __func_load(__func_entry ptr) {
     }
 
     asm volatile(
-        "call *%1          \n\t"   // Call the function pointed to by ptr
-        "movq %%rax, %0    \n\t"   // Move the return value from rax to __func_load_return_value
-        : "=r"(__func_load_return_value)  // Output operand
-        : "r"(ptr)                     // Input operand
-        : "rax"                        // Clobbered register
+        "call *%1          \n\t"
+        "movq %%rax, %0    \n\t"
+        : "=r"(__func_load_return_value)
+        : "r"(ptr)
+        : "rax"
     );
 
     __func_load_abs_layer -= 1;
